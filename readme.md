@@ -49,6 +49,9 @@ git config remote.origin.gcrypt-participants "<SIGNER_FINGERPRINT> <FRIEND_FINGE
 3*(optional). If you don't want to reuse the same key pair you have set globally you may want to specify per repo. Make sure that <SIGNER_FINGERPRINT> will also be mentioned in remote.origin.gcrypt-participants.
 git config user.signingkey "<SIGNER_FINGERPRINT>"
 //alternative: remote.<name>.gcrypt-signingkey
+//to be honest I prefer this option much better:
+git config remote.origin.gcrypt-signingkey "<SIGNER_FINGERPRINT>"
+//keep in mind that you can also change the remote name from origin to something else.
 
 4. Cloning the repo (will work only if your public key was specified in remote.origin.gcrypt-participants via fingerprint)
 git clone gcrypt::https://github.com/Dataram57/encrypted_repo_test
