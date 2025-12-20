@@ -56,3 +56,10 @@ git config remote.origin.gcrypt-signingkey "<SIGNER_FINGERPRINT>"
 4. Cloning the repo (will work only if your public key was specified in remote.origin.gcrypt-participants via fingerprint)
 git clone gcrypt::https://github.com/Dataram57/encrypted_repo_test
 ```
+
+### Verifications / Configuration prints
+
+```
+gpg -k
+git config -l
+```
