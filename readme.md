@@ -4,7 +4,7 @@
 
 - git
 - gpg
-- [git-remote-gcrypt](https://github.com/spwhitton/git-remote-gcrypt)
+- [git-remote-gcrypt](https://github.com/spwhitton/git-remote-gcrypt) (**WARNING: This tool is great, but encrypted repositories it produces have similarities which can help someone link them. (ex: Manifest file name, commit date.)**)
 - Know how signing commits works and when github or other parties display "Verified" message next to your commits.
 
 ### Key Generation
