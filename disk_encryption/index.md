@@ -95,3 +95,10 @@ sudo umount "$PARTITION_MOUNT_PATH"
 # Close the mapper to the decrypted partition
 sudo cryptsetup close "$PARTITION_NAME"
 ```
+
+### Safely remove the drive
+
+```sh
+# Safely remove the drive.
+udisksctl power-off -b "$DISK"
+```
