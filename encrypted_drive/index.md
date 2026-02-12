@@ -1,24 +1,27 @@
+# Encrypted Drive
 
+### Requirements
 
-## General
+- cryptsetup
 
 ### Variables
 
 ```sh
-DISK="/dev/sdc"
-PARTITION="/dev/sdc2"
-PARTITION_NAME="Backup"
-PARTITION_MOUNT_PATH="temp_mnt"
+DISK="/dev/sda"                     # Disk
+PARTITION="/dev/sda1"               # Partiction that should be encrypted
+PARTITION_NAME="Archive"            # Temporary name of the encrypted particion
+PARTITION_MOUNT_PATH="temp_mnt"     # Temporary folder for mounting the mapper to the decrypted particion
 ```
 
 ### Veryfing progress
 
 ```sh
-# Shows disks and partitions 
+# Shows disks and partitions (even mappers to decrypted partictions).
+# I recommend running this command almost after every command you make to see changes.
 lsblk
 ```
 
-## Setting up the encrypted disk:
+## Setting up the encrypted drive:
 
 ### 1. Encryption Layer Setup
 
@@ -64,7 +67,7 @@ sudo mkfs.ext4 "/dev/mapper/$PARTITION_NAME"
 sudo cryptsetup close "$PARTITION_NAME"
 ```
 
-## Daily use
+## Day-to-Day use of the ecrypted drive
 
 ### Mounting specific disk partition
 
@@ -82,8 +85,11 @@ sudo mount "/dev/mapper/$PARTITION_NAME" "$PARTITION_MOUNT_PATH"
 ### Making the mount accessible by a normal user
 
 ```sh
-sudo chown -R "$(id -un):$(id -gn)" "$PARTITION_MOUNT_PATH"
+sudo chown "$(id -un):$(id -gn)" "$PARTITION_MOUNT_PATH"
 sudo chmod 766 "$PARTITION_MOUNT_PATH"
+
+# Alternatively:
+sudo chown -R "$(id -un):$(id -gn)" "$PARTITION_MOUNT_PATH"
 ```
 
 ### Unmounting specific disk partition
